@@ -7,6 +7,7 @@ import { hash } from 'bcrypt'
 
 
 dotenv.config();
+const port = process.env.port
 const __dirname = import.meta.dirname
 
 const initializeTestDb = () => {

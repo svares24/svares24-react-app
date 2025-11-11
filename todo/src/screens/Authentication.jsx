@@ -5,15 +5,17 @@ export const AuthenticationMode = Object.freeze({
  SignUp: 'SignUp'
 })
 export default function Authentication({authenticationMode}) {
- const { user, setUser,signUp, signIn } = useUser()
+ const { user, setUser, signUp, signIn } = useUser()
  const navigate = useNavigate()
+
  const handleSubmit = async (e) => {
  e.preventDefault()
- const signFunction = authenticationMode === AuthenticationMode.SignUp ?
- signUp : signIn
+ const signFunction = authenticationMode === AuthenticationMode.SignUp ? signUp : signIn
+ 
  signFunction().then(response =>{
- navigate(authenticationMode === Authentication.SignUp ? '/signin' : '/')
+ navigate(authenticationMode === AuthenticationMode.SignUp ? '/signin' : '/')
  })
+ 
  .catch(error => {
  alert(error)
  })
@@ -34,6 +36,7 @@ export default function Authentication({authenticationMode}) {
  type='password' value={user.password}
  onChange={e => setUser({...user,password: e.target.value})}
  />
+
  <button type='submit'>{authenticationMode === AuthenticationMode.SignIn ? 'Login' : 'Submit'}</button>
  <Link to={authenticationMode === AuthenticationMode.SignIn ? '/signup' : '/signin'}>
  {authenticationMode === AuthenticationMode.SignIn ? 'No account? Sign up' : 'Already signed up? Sign in'}
