@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Row from "./components/Row";
 import axios from 'axios'
 
 const url = "http://localhost:3001"
